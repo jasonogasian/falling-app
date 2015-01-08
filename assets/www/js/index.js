@@ -34,6 +34,20 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        // listen to accelerometer events every 100ms
+        navigator.accelerometer.watchAcceleration(
+            // success handler
+            app.fallDetect,
+
+            // error handler
+            function (e) {
+              alert("accel fail (" + e.name + ": " + e.message + ")");
+            },
+
+            // options: update every 100ms
+            { frequency: 100 }
+        );
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -45,5 +59,22 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    // Check accelerometer values for fall range
+    fallDetect: function(acc) {
+        var GRAVITY_EARTH =  9.80665; // Earth's gravity in SI units (m/s^2)
+        var THRESHHOLD = 3;
+
+        var gX = acc.x / GRAVITY_EARTH;
+        var gY = acc.y / GRAVITY_EARTH;
+        var gZ = acc.z / GRAVITY_EARTH;
+
+        // gForce will be close to 1 when there is no movement.
+        var gForce = Math.sqrt(gX * gX + gY * gY + gZ * gZ);
+
+        if (gForce > THRESHHOLD) {
+            alert('SHAKEN, not stirred!');
+        }
+        console.log(gForce);
     }
 };
