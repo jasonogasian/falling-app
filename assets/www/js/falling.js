@@ -4,11 +4,11 @@ angular.module('FallingApp', [
 
 angular.module('FallingApp.controllers', ['ngMaterial'])
 .controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
-  $scope.toggleLeft = function() {
-    $mdSidenav('left').toggle();
+  $scope.openNav = function() {
+    $mdSidenav('left').open();
   };
 })
-.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
+.controller('NavCtrl', function($scope, $timeout, $mdSidenav, $log) {
   $scope.close = function() {
     $mdSidenav('left').close();
   };

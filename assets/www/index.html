@@ -16,65 +16,92 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
--->
+  -->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-        <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
+    <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
 
-        <title>FallingApp</title>
-    </head>
-    <body>
-        <div id="app">
-            <div ng-app="FallingApp" ng-controller="AppCtrl">
-                <section layout="row">
-                    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" hide-lt-md>
-                      <md-toolbar class="md-theme-indigo">
-                        <h1 class="md-toolbar-tools">Sidenav Left</h1>
-                      </md-toolbar>
-                      <md-content class="md-padding" ng-controller="LeftCtrl">
-                        <p>
-                          Hello there
-                        </p>
-                      </md-content>
-                    </md-sidenav>
-                    <md-content flex class="md-padding">
-                      <div layout="column" layout-fill layout-align="center center">
-                        <md-toolbar class="md-theme-indigo">
-                            <h1 class="md-toolbar-tools">TITLE</h1>
-                          </md-toolbar>
-                        <p>The left sidenav will 'lock open' on a medium (>=960px wide) device.</p>
-                        <div>
-                          <md-button ng-click="toggleLeft()" class="md-primary">
-                            Toggle left
-                          </md-button>
-                        </div>
-                      </div>
-                    </md-content>
-                </section>
-            </div>
-        </div>
+    <title>FallingApp</title>
+  </head>
+  <body>
+    <div id="app" ng-app="FallingApp" ng-controller="AppCtrl" layout layout-fill>
+      <section layout="row">
 
-        <!-- Angular Material Dependencies -->
-        <script src="http://cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+        <!-- Navigation Menu -->
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" >
+          <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Sidenav Left</h1>
+          </md-toolbar>
+          <md-content class="md-padding" ng-controller="NavCtrl">
+            <md-list>
+              <md-item>
+                <md-item-content>
+                  <div class="md-tile-left">
+                    <img ng-src="">
+                  </div>
+                  <div class="md-tile-content">
+                    <h3>Settings</h3>
+                  </div>
+                </md-item-content>
+              </md-item>
+            </md-list>
+          </md-content>
+        </md-sidenav>
 
-        <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+        <!-- Main Content Area -->
+        <div layout="column" layout-fill layout-align="center center">
 
-        <!-- // <script type="text/javascript" src="cordova.js"></script> -->
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/falling.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+          <!-- Title Bar -->
+          <md-toolbar class="md-theme-indigo">
+          <section layout="row">
+            <md-button ng-click="openNav()">
+            &#9776;
+          </md-button>
+          <h1 class="md-toolbar-tools">Concious Wearables</h1>
+        </section>
+        </md-toolbar>
 
-    </body>
+        <!-- Body Content -->
+        <md-content flex class="md-padding">
+          <p>Thank you for choosing Concious Wearables. The world's #1 provider of wearable technology for the thoughtful individual.</p>
+          <div layout="row">
+            <md-button class="md-primary md-raised" md-theme-green >
+              New User
+            </md-button>
+            <md-button class="md-primary md-raised" md-default-theme >
+              Sign In
+            </md-button>
+          </div>
+        </md-content>
+
+        <!-- Status Footer -->
+        <md-content class="md-padding md-theme-green">
+          FOOTER
+        </md-content>
+      </section>
+    </div>
+
+    <!-- Angular Material Dependencies -->
+    <script src="http://cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+    <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+
+    <!-- // <script type="text/javascript" src="cordova.js"></script> -->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/falling.js"></script>
+    <script type="text/javascript">
+    app.initialize();
+    </script>
+
+  </body>
 </html>
