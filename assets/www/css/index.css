@@ -28,6 +28,7 @@ a {
 .circle {
     width: 80px;
     height: 80px;
+    border: none;
     border-radius: 40px;
     z-index: 4;
 }
@@ -145,6 +146,7 @@ a {
 
 .card .form label {
     display: block;
+    margin-bottom: 7px;
 }
 
 .card .form input {
@@ -152,10 +154,12 @@ a {
     display: block;
     border: none;
     border-bottom: 1px solid #777;
+    margin-bottom: 7px;
 }
 
 .card.login .form .inputs a {
     font-size: 12px;
+    display: block;
 }
 
 .card.login .buttons {
@@ -169,7 +173,7 @@ a {
 }
 
 .buttons .sign-up::after {
-    content: "Sign In";
+    content: "Sign Up";
 }
 
 .card.reg .header:nth-of-type(2) {
@@ -201,8 +205,8 @@ a {
 }
 
 .card .sensor-indicator {
-    width: 60px;
-    height: 60px;
+    width: 57px;
+    height: 57px;
     position: relative;
 }
 .card .permissions .sensor-indicator::after {
@@ -249,8 +253,8 @@ a {
 .card .sensor-edit {
     border-color: orange;
     position: absolute;
-    right: 20px;
-    margin-top: 34px !important;
+    right: 10px;
+    margin-top: 23px !important;
 }
 
 .card .sensor-no::after,
@@ -311,6 +315,7 @@ a {
 .buttons .sign-in::after {
     content: "Sign In";
     display: block;
+    font-size: 14px;
     height: 80px;
     position: relative;
     top: 80px;

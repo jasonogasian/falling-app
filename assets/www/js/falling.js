@@ -18,13 +18,17 @@ function AppClass($el, options) {
 		// Append templates
 		$('.nav-buttons').append(window.forwardBackButtons.innerHTML);
 
-		var signIn = $el.find( '.card.login .sign-in' );
+		var signIn = $el.find( '.card.login form' );
 		var signUp = $el.find( '.card.login .sign-up' );
 		var next = $el.find( '.nav-controls .next' );
 		var prev = $el.find( '.nav-controls .back' );
 
 		// Click handlers
-		signIn.click(this.Carousel.next);
+		self = this;
+		signIn[0].onsubmit = function() {
+			self.Carousel.next();
+			return false;
+		}
 		next.click(this.Carousel.next);
 		prev.click(this.Carousel.prev);
 	}
