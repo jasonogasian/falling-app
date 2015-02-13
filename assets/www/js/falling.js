@@ -12,27 +12,95 @@ function AppClass($el, options) {
 	}
 
 	this.Carousel = options.carousel;
-
-	this.bind = function(card) {
-
-		// Append templates
-		$('.nav-buttons').append(window.forwardBackButtons.innerHTML);
-
-		var signIn = $el.find( '.card.login form' );
-		var signUp = $el.find( '.card.login .sign-up' );
-		var next = $el.find( '.nav-controls .next' );
-		var prev = $el.find( '.nav-controls .back' );
-
-		// Click handlers
-		self = this;
-		signIn[0].onsubmit = function() {
-			self.Carousel.next();
-			return false;
-		}
-		next.click(this.Carousel.next);
-		prev.click(this.Carousel.prev);
-	}
 }
+
+AppClass.prototype.bind = function(card) {
+
+	// Append templates
+	$('.nav-buttons').append(window.forwardBackButtons.innerHTML);
+
+	var signIn = this.$el.find( '.card.login form' );
+	var signUp = this.$el.find( '.card.login .sign-up' );
+	var next = this.$el.find( '.nav-controls .next' );
+	var prev = this.$el.find( '.nav-controls .back' );
+
+	// Click handlers
+	var _this = this;
+	signIn[0].onsubmit = function() {
+		_this.Carousel.next();
+		return false;
+	}
+	next.click(this.Carousel.next);
+	prev.click(this.Carousel.prev);
+}
+
+
+AppClass.prototype.populate = function() {
+
+	// Populate sensors page with sensor availability
+	var _populateSensors = function() {
+		for (var sensor in window.sensors) {
+			var avail = window.sensors[sensor];
+
+			var _sensorOn = function($el) {
+				$el.removeClass('off');
+				$el.addClass('on');
+			}
+
+			var _sensorOff = function($el) {
+				$el.removeClass('on');
+				$el.addClass('off');
+			}
+
+			switch (sensor) {
+	      case 'accelerometer':
+	      	$el = $('.sensor-row.acc .sensor-indicator');
+	      	if (avail)
+	      		_sensorOn($el);
+	      	else
+	      		_sensorOff($el);
+	      	break; 
+	      case 'gyro':
+	      	$el = $('.sensor-row.gyro .sensor-indicator');
+	      	if (avail)
+	      		_sensorOn($el);
+	      	else
+	      		_sensorOff($el);
+	      	break; 
+	      case 'gps':
+	      	$el = $('.sensor-row.gps .sensor-indicator');
+	      	if (avail)
+	      		_sensorOn($el);
+	      	else
+	      		_sensorOff($el);
+	      	break; 
+	      case 'heartrate':
+	      	$el = $('.sensor-row.hr .sensor-indicator');
+	      	if (avail)
+	      		_sensorOn($el);
+	      	else
+	      		_sensorOff($el);
+	      	break; 
+	      case 'proximity':
+	      	$el = $('.sensor-row.prox .sensor-indicator');
+	      	if (avail)
+	      		_sensorOn($el);
+	      	else
+	      		_sensorOff($el);
+	      	break; 
+	      case 'barometer':
+	      	$el = $('.sensor-row.bar .sensor-indicator');
+	    		if (avail)
+	    			_sensorOn($el);
+	    		else
+	    			_sensorOff($el);
+	    		break;
+	    }
+	  }
+	}
+
+	_populateSensors();
+};
 
 
 function CarouselClass($el) {
@@ -41,7 +109,7 @@ function CarouselClass($el) {
 	this.active = $el.find('.card.active');
 	this.EVENTS = {};
 
-	_this = this;
+	var _this = this;
 
 	this.next = function() {
 		var current = _this.active.index() - 1;
@@ -80,10 +148,30 @@ function CarouselClass($el) {
 	}
 }
 
-
-$(document).ready(function() {
+window.appReady = function() {
 	window.App = new AppClass( $('#content'), {
 		carousel: new CarouselClass( $('.oobe') )
 	});
 	App.bind();
-});
+	App.populate();
+}
+
+//
+// Dev Only
+//
+if (window.navigator.platform == 'MacIntel') {
+	$(document).ready( function() {
+		window.sensors = {
+	    accelerometer: true,
+	    gyro: false,
+	    gps: true,
+	    heartrate: false,
+	    proximity: false,
+	    barometer: false
+		}
+		window.appReady();
+	});
+}
+else {
+	$('body').append( $('<script type="text/javascript" src="cordova.js"></script>') );
+}

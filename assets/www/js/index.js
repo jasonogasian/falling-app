@@ -19,6 +19,14 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        window.sensors = {
+            accelerometer: false,
+            gyro: false,
+            gps: false,
+            heartrate: false,
+            proximity: false,
+            barometer: false
+        };
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -34,20 +42,28 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-        // listen to accelerometer events every 100ms
-        navigator.accelerometer.watchAcceleration(
-            // success handler
-            app.fallDetect,
 
-            // error handler
-            function (e) {
-              alert("accel fail (" + e.name + ": " + e.message + ")");
-            },
+        // Listen to accelerometer events every 100ms
+        if (navigator.accelerometer) {
+            window.sensors.accelerometer = true;
 
-            // options: update every 100ms
-            { frequency: 100 }
-        );
+            navigator.accelerometer.watchAcceleration(
+                // success handler
+                app.fallDetect,
+
+                // error handler
+                function (e) {
+                  alert("accel fail (" + e.name + ": " + e.message + ")");
+                },
+
+                // options: update every 100ms
+                { frequency: 100 }
+            );
+        }
+
+        window.appReady();
     },
+    
     // Check accelerometer values for fall range
     fallDetect: function(acc) {
         var GRAVITY_EARTH =  9.80665; // Earth's gravity in SI units (m/s^2)

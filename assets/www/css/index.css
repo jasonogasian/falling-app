@@ -167,7 +167,8 @@ a {
     margin-top: 50px;
 }
 
-.card.login .buttons > div {
+.card.login .buttons > div,
+.card.login .buttons > button {
     display: inline-block;
     margin: 0 20px;
 }
