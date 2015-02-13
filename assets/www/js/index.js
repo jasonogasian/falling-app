@@ -61,9 +61,14 @@ var app = {
             );
         }
 
+        // Check for geolocation support
+        if (navigator.geolocation) {
+            window.sensors.gps = true;
+        }
+
         window.appReady();
     },
-    
+
     // Check accelerometer values for fall range
     fallDetect: function(acc) {
         var GRAVITY_EARTH =  9.80665; // Earth's gravity in SI units (m/s^2)
