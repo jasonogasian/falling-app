@@ -1,15 +1,327 @@
-#app {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: arial;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(26, 157, 200); /* Blue */
+}
+
+#content {
     width: 100%;
     height: 100%;
-    background-color: #F3F3F3;
 }
 
-.header md-card{
-    color: #fff;
+.hidden {
+    display: none;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    z-index: 4;
+}
+
+.circle.grey {
+    background-color: #666;
+}
+
+.circle.blue {
+    background-color: rgb(26, 157, 200); /* Blue */
+}
+
+.circle.green {
+    background-color: #09D916;
+}
+
+.nav-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 20px;
+    width: 100%;
     text-align: center;
-    background-color: #5677fc;
 }
 
-md-item-content {
-    border-bottom: 1px solid #444;
+.nav-controls .circle {
+    display: inline-block;
+    margin: 20px;
+}
+
+.nav-controls .circle.next::after {
+    content: "Continue";
+}
+.nav-controls .circle.back::after {
+    content: "Back"
+}
+.circle::after {
+    display: block;
+    height: 80px;
+    position: relative;
+    top: 80px;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.carousel .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    background: rgba(25,25,25,0.5);
+    z-index: 5;
+}
+
+.carousel .card {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    padding: 20px 16px;
+    background: #FFF;
+    -webkit-transition: -webkit-transform 0.5s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.carousel .card .module {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.carousel .card.out {
+    -webkit-transform: translateX(360px);
+    z-index: 0;
+}
+
+.carousel .card.back {
+    -webkit-transform: translateX(-360px);
+    z-index: 0;
+}
+
+.carousel .card.active {
+    z-index: 10;
+}
+
+.card .header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card .sub-head {
+    text-align: center;
+}
+
+.card .logo {
+    height: 110px;
+    margin: 25px 0;
+    background: url("../img/concious_logo.png") center no-repeat;
+    background-size: contain;
+}
+
+.card .form > div {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.card .form .labels {
+    text-align: right;
+    width: 90px;
+    padding-right: 5px;
+}
+
+.card .form label {
+    display: block;
+}
+
+.card .form input {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #777;
+}
+
+.card.login .form .inputs a {
+    font-size: 12px;
+}
+
+.card.login .buttons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.card.login .buttons > div {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.buttons .sign-up::after {
+    content: "Sign In";
+}
+
+.card.reg .header:nth-of-type(2) {
+    margin-top: 10px;
+}
+
+.card.reg .form .labels {
+    width: 110px;
+}
+
+.card.reg .form .inputs {
+    width: 190px;
+}
+
+.card.reg label,
+.card.reg input {
+    height: 16px;
+    margin-bottom: 7px;
+}
+
+.card .sensor-row {
+    display: table-row;
+}
+
+.card .sensor-row > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 15px 15px 0 0;
+}
+
+.card .sensor-indicator {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+.card .permissions .sensor-indicator::after {
+    content: "Yes";
+    height: 20px;
+    position: absolute;
+    top: 64px;
+    left: 17px;
+}
+
+.card .sensor-indicator.off {
+    background: transparent;
+    border: 2px solid red;
+}
+
+.card .sensor-label {
+    font-size: 18px;
+    max-width: 197px;
+}
+
+.card .sensor-label p {
+    font-size: 13px;
+}
+
+.card .sensor-label span {
+    font-size: 10px;
+    display: block;
+    margin-top: 3px;
+}
+
+.card .sensor-no,
+.card .sensor-reset,
+.card .sensor-test,
+.card .sensor-edit {
+    width: 25px;
+    height: 25px;
+    border: 2px solid rgb(26, 157, 200);
+    border-radius: 13px;
+    position: relative;
+}
+.card .sensor-no {
+    border-color: red;
+}
+.card .sensor-edit {
+    border-color: orange;
+    position: absolute;
+    right: 20px;
+    margin-top: 34px !important;
+}
+
+.card .sensor-no::after,
+.card .sensor-reset::after,
+.card .sensor-test::after,
+.card .sensor-edit::after {
+    position: absolute;
+    height: 15px;
+    bottom: -18px;
+}
+.card .sensor-no::after {
+    content: "No";
+    top: 44px;
+    left: 2px;
+}
+.card .sensor-reset::after {
+    content: "Reset";
+    left: -40%;
+}
+.card .sensor-test::after {
+    content: "Test";
+    left: -18%;
+}
+.card .sensor-edit::after {
+    content: "Edit & Delete";
+    width: 38px;
+    left: -25%;
+    font-size: 12px;
+}
+
+.card .sensor-add {
+    width: 50px;
+    height: 50px;
+    font-size: 55px;
+    line-height: 40px;
+    padding: 5px 8px;
+    border: 1px solid #777;
+    border-radius: 25px;
+    position: relative;
+    color: #777;
+    margin: 20px auto;
+}
+
+.card .sensor-add::after {
+    content: "Add";
+    font-size: 14px;
+    line-height: 16px;
+    position: absolute;
+    height: 20px;
+    bottom: -23px;
+    left: 10px;
+}
+
+.card hr {
+    margin-top: 10px;
+}
+
+.buttons .sign-in::after {
+    content: "Sign In";
+    display: block;
+    height: 80px;
+    position: relative;
+    top: 80px;
+}
+
+.carousel .card .controls {
+    width: 100%;
+    bottom: 0;
+    display: table;
+}
+
+.carousel .card .controls > div {
+    display: table-cell;
 }

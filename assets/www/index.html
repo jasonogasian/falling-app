@@ -25,78 +25,282 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 
     <!-- Angulars Material CSS now available via Google CDN; version 0.6 used here -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css">
+    <!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.css"> -->
 
     <title>FallingApp</title>
+
+    <!-- Templates -->
+    <script id="forwardBackButtons" type="text/html">
+      <div class="nav-controls">
+        <div class="circle grey back"></div>
+        <div class="circle blue next"></div>
+      </div>
+    </script>
   </head>
   <body>
-    <div id="app" ng-app="FallingApp" ng-controller="AppCtrl" layout layout-fill>
-      <section layout="row">
-
-        <!-- Navigation Menu -->
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" >
-          <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Sidenav Left</h1>
-          </md-toolbar>
-          <md-content class="md-padding" ng-controller="NavCtrl">
-            <md-list>
-              <md-item>
-                <md-item-content>
-                  <div class="md-tile-left">
-                    <img ng-src="">
-                  </div>
-                  <div class="md-tile-content">
-                    <h3>Settings</h3>
-                  </div>
-                </md-item-content>
-              </md-item>
-            </md-list>
-          </md-content>
-        </md-sidenav>
-
-        <!-- Main Content Area -->
-        <div layout="column" layout-fill layout-align="center center">
-
-          <!-- Title Bar -->
-          <md-toolbar class="md-theme-indigo">
-          <section layout="row">
-            <md-button ng-click="openNav()">
-            &#9776;
-          </md-button>
-          <h1 class="md-toolbar-tools">Concious Wearables</h1>
-        </section>
-        </md-toolbar>
-
-        <!-- Body Content -->
-        <md-content flex class="md-padding">
-          <p>Thank you for choosing Concious Wearables. The world's #1 provider of wearable technology for the thoughtful individual.</p>
-          <div layout="row">
-            <md-button class="md-primary md-raised" md-theme-green >
-              New User
-            </md-button>
-            <md-button class="md-primary md-raised" md-default-theme >
-              Sign In
-            </md-button>
+    <div id="content">
+      <div class="oobe carousel">
+        <div class="overlay"></div>
+        <div class="card login active">
+          <div class="header module">
+            CONSCIOUS ID
           </div>
-        </md-content>
+          <div class="sub-head module">
+            Your Concious ID is used to help set up your Account, Cloud, SMS 
+            and much more on your Wearable.
+          </div>
+          <div class="logo module"></div>
+          <div class="form module">
+            <div class="labels">
+              <label>Concious ID:</label>
+              <label>Password:</label>
+            </div>
+            <div class="inputs">
+              <input type="text" />
+              <input type="password" />
+              <a class="forgot">Forgot your Concious ID or password?</a>
+            </div>
+          </div>
+          <div class="buttons module">
+            <div class="circle grey sign-up"></div>
+            <div class="circle blue sign-in"></div>
+          </div>
+        </div>
 
-        <!-- Status Footer -->
-        <md-content class="md-padding md-theme-green">
-          FOOTER
-        </md-content>
-      </section>
+        <div class="card reg out nav-buttons">
+          <div class="header module">
+            Registration
+          </div>
+          <div class="sub-head module">
+            General Info
+          </div>
+
+          <div class="form module ">
+            <div class="labels">
+              <label>First Name:</label>
+              <label>Last Name:</label>
+              <label>Phone Number:</label>
+              <label>Email Address:</label>
+              <label>Birthday:</label>
+            </div>
+            <div class="inputs">
+              <input type="text" name="firstName" />
+              <input type="text" name="lastName" />
+              <input type="phone" name="phone" />
+              <input type="email" name="email" />
+              <input type="date" name="birthday" />
+            </div>
+          </div>
+
+          <div class="header module">
+            User Permission
+          </div>
+          <div class="sub-head module">
+            Data Collection
+          </div>
+
+          <div class="sensor-list permissions module">
+            <div class="sensor-row data">
+              <div class="sensor-no"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Do we have your permission to collect data from our product?</P>
+                <span class="blue-text">*We need this setting on as a minimum to use our service</span>
+                <span>**We store your data for 3 days on our HIPPA compliant Cloud servers</span>
+              </div>
+            </div>
+            <div class="sensor-row cloud">
+              <div class="sensor-no"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Would you like valuable key insights into your daily, weekly and monthly activities?</p>
+                <span>*We store your data on our HIPPA compliant Cloud servers</span>
+                <span>**We will need to collect your data for a minimum of 30 days to provide valuable insights</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="card sensors out nav-buttons">
+          <div class="header module">
+            Sensors
+          </div>
+
+          <div class="sensor-list module">
+            <div class="sensor-row hr">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">Heart Rate (PPG)</div>
+            </div>
+            <div class="sensor-row acc">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">Accelerometer</div>
+            </div>
+            <div class="sensor-row gyro">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">Gyro</div>
+            </div>
+            <div class="sensor-row gps">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">GPS</div>
+            </div>
+            <div class="sensor-row prox">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator off circle green"></div>
+              <div class="sensor-label">Proximity</div>
+            </div>
+            <div class="sensor-row bar">
+              <div class="sensor-reset"></div>
+              <div class="sensor-indicator off circle green"></div>
+              <div class="sensor-label">Barometer</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card netw out nav-buttons">
+          <div class="header module">
+            Networks
+          </div>
+
+          <div class="sensor-list module">
+            <div class="sensor-row cell">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                Cellular (Sim Card)
+                <p>Primary Network</p>
+              </div>
+            </div>
+            <div class="sensor-row wifi">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                WiFi
+                <p>Secondary Network</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card comm out nav-buttons">
+          <div class="header module">
+            Communicate
+          </div>
+
+          <div class="sensor-list module">
+            <div class="sensor-row sms">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                SMS Text Message
+                <p>Encrypted and Secure</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card contacts out nav-buttons">
+          <div class="header module">
+            Non-Emergency Contacts
+          </div>
+
+          <div class="sensor-list module">
+            <div class="sensor-row nem-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Level 1,2,3 - Incident System</p>
+                John Smith
+                <p>Husband</p>
+              </div>
+              <div class="sensor-edit"></div>
+            </div>
+            <div class="sensor-row nem-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Level 1,2,3 - Incident System</p>
+                Kim Lawless
+                <p>Daughter</p>
+              </div>
+              <div class="sensor-edit"></div>
+            </div>
+            <div class="sensor-row nem-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Level 3 - Incident System</p>
+                Susan Johnson
+                <p>Neighbor</p>
+              </div>
+              <div class="sensor-edit"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card emergency out nav-buttons">
+          <div class="header module">
+            Emergency Contacts
+          </div>
+
+          <div class="sensor-list module">
+            <div class="sensor-row em-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>IMMEDIATE - Incident System</p>
+                E911
+                <p>Local Emergency Dispatch Center</p>
+              </div>
+            </div>
+            <hr />
+            <div class="sensor-row em-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>IMMEDIATE - Incident System</p>
+                Kim Lawless
+                <p>Daughter</p>
+              </div>
+              <div class="sensor-edit"></div>
+            </div>
+            <div class="sensor-row em-contact">
+              <div class="sensor-test"></div>
+              <div class="sensor-indicator on circle green"></div>
+              <div class="sensor-label">
+                <p>Level 3 - Incident System</p>
+                Gloria Elizadro
+                <p>Personal Caregiver</p>
+              </div>
+              <div class="sensor-edit"></div>
+            </div>
+          </div>
+          <div class="module">
+            <div class="sensor-add">+</div>
+          </div>
+        </div>
+      </div>
+      <div class="main hidden">
+        <div>MAIN PAGE</div>
+      </div>
     </div>
 
-    <!-- Angular Material Dependencies -->
+    <!-- Angular Material Dependencies
     <script src="http://cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script> -->
 
-    <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script>
+    <!-- Angular Material Javascript now available via Google CDN; version 0.6 used here
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/0.6.1/angular-material.min.js"></script> -->
 
     <!-- // <script type="text/javascript" src="cordova.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/falling.js"></script>
     <script type="text/javascript">
