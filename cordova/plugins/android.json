@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"Proximity\"><param name=\"android-package\" value=\"org.awokenwell.proximity.ProximitySensorListener\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Barometer\"><param name=\"android-package\" value=\"org.dartlang.phonegap.barometer.BarometerListener\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -80,6 +84,9 @@
             "PACKAGE_NAME": "com.ogasian.falling"
         },
         "org.awokenwell.proximity": {
+            "PACKAGE_NAME": "com.ogasian.falling"
+        },
+        "org.dartlang.phonegap.barometer": {
             "PACKAGE_NAME": "com.ogasian.falling"
         }
     },

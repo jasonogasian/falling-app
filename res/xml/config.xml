@@ -28,4 +28,7 @@
     <feature name="Proximity">
         <param name="android-package" value="org.awokenwell.proximity.ProximitySensorListener" />
     </feature>
+    <feature name="Barometer">
+        <param name="android-package" value="org.dartlang.phonegap.barometer.BarometerListener" />
+    </feature>
 </widget>

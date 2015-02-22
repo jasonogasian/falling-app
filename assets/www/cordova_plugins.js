@@ -48,6 +48,20 @@ module.exports = [
         "clobbers": [
             "navigator.proximity"
         ]
+    },
+    {
+        "file": "plugins/org.dartlang.phonegap.barometer/www/Pressure.js",
+        "id": "org.dartlang.phonegap.barometer.Pressure",
+        "clobbers": [
+            "Pressure"
+        ]
+    },
+    {
+        "file": "plugins/org.dartlang.phonegap.barometer/www/barometer.js",
+        "id": "org.dartlang.phonegap.barometer.barometer",
+        "clobbers": [
+            "navigator.barometer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -58,7 +72,8 @@ module.exports.metadata =
     "com.jsmobile.plugins.sms": "0.0.1",
     "org.dartlang.phonegap.gyroscope": "0.0.2",
     "com.megster.cordova.bluetoothserial": "0.3.5",
-    "org.awokenwell.proximity": "0.2.1"
+    "org.awokenwell.proximity": "0.2.1",
+    "org.dartlang.phonegap.barometer": "0.0.2"
 }
 // BOTTOM OF METADATA
 });

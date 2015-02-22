@@ -76,6 +76,23 @@ var app = {
             );
         }
 
+        // Listen to barometer every 100ms
+        if (navigator.barometer) {
+            window.sensors.barometer = true;
+
+            navigator.barometer.watchPressure(
+                function (pressure) {
+                    app.recordPressure(pressure);
+                },
+
+                function () {
+                    alert('Barometer fail');
+                },
+
+                { frequency: 100 }
+            );
+        }
+
         // Check for bluetooth connectivity
         bluetoothSerial.isEnabled(
             function() {
@@ -109,6 +126,11 @@ var app = {
 
     recordGyro: function(speed) {
         app.gyroValue = speed;
+    },
+
+
+    recordPressure: function(pressure) {
+        app.pressure = pressure;
     },
 
 

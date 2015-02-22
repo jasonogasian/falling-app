@@ -22,3 +22,9 @@ Proximity
 _____________
 	Instructions: https://github.com/awoken-well/cordova-plugin-proximity
 	plugman install --platform android --project . --plugin https://github.com/awoken-well/cordova-plugin-proximity.git
+
+
+Barometer
+_____________
+	Instructions: https://github.com/zanderso/cordova-plugin-barometer/blob/master/doc/index.md
+	plugman install --platform android --project . --plugin https://github.com/zanderso/cordova-plugin-barometer.git
