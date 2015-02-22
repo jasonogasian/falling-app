@@ -4,11 +4,12 @@ function AppClass($el, options) {
 	slides = { 		// Match class names of cards
 		'login': 0,
 		'reg': 1,
-		'sensors': 2,
-		'netw': 3,
-		'comm': 4,
-		'contacts': 5,
-		'emergency': 6,
+		'data': 2,
+		'sensors': 3,
+		'netw': 4,
+		'comm': 5,
+		'contacts': 6,
+		'emergency': 7,
 	}
 
 	this.Carousel = options.carousel;
@@ -32,6 +33,16 @@ AppClass.prototype.bind = function(card) {
 	}
 	next.click(this.Carousel.next);
 	prev.click(this.Carousel.prev);
+
+	$('.circle-button').on('touchstart', function() {
+		$(this).addClass('active');
+	});
+	$('.circle-button').on('touchend', function() {
+		$(this).removeClass('active');
+	});
+	$('.circle-button').on('touchcancel', function() {
+		$(this).removeClass('active');
+	});
 }
 
 
@@ -161,6 +172,7 @@ window.appReady = function() {
 //
 if (window.navigator.platform == 'MacIntel') {
 	$(document).ready( function() {
+		$('#overlay').hide();
 		window.sensors = {
 	    accelerometer: true,
 	    gyro: false,
@@ -173,5 +185,31 @@ if (window.navigator.platform == 'MacIntel') {
 	});
 }
 else {
+	$('#overlay').hide();
 	$('body').append( $('<script type="text/javascript" src="cordova.js"></script>') );
 }
+
+
+function setAgeInput() {
+	$('.card.reg input.age').val(event.target.value);
+}
+
+
+function closeOverlay() {
+	$('#overlay').hide().find('.wrapper').empty();
+}
+
+
+function addContact(isEmergency) {
+	ovr = $('#overlay');
+	ovr.find('.wrapper').append(window.contactEditForm.innerHTML);
+	ovr.show();
+}
+
+
+function createContact(form) {
+	// TODO
+	closeOverlay();
+	return false;
+}
+
