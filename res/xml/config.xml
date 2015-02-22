@@ -16,4 +16,7 @@
     <feature name="Accelerometer">
         <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
     </feature>
+    <feature name="Sms">
+        <param name="android-package" value="com.jsmobile.plugins.sms.Sms" />
+    </feature>
 </widget>

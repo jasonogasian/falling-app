@@ -10,3 +10,9 @@ Geolocation
 _____________
 	Instructions: https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md
 	plugman install --platform android --project . --plugin https://github.com/apache/cordova-plugin-geolocation.git
+
+
+SMS
+_____________
+	Instructions: http://plugins.cordova.io/#/package/com.jsmobile.plugins.sms
+	plugman install --platform android --project . --plugin https://github.com/hazems/cordova-sms-plugin.git

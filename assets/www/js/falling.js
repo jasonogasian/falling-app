@@ -13,6 +13,14 @@ function AppClass($el, options) {
 	}
 
 	this.Carousel = options.carousel;
+
+	if (!localStorage.contacts) {
+		var contacts = {
+			nonEm: CONTACTS.nonEm,
+			em: CONTACTS.em
+		}
+		localStorage.contacts = JSON.stringify(contacts);
+	}
 }
 
 AppClass.prototype.bind = function(card) {
@@ -106,11 +114,60 @@ AppClass.prototype.populate = function() {
 	    		else
 	    			_sensorOff($el);
 	    		break;
+	      case 'cell':
+	      	$el = $('.sensor-row.cell .sensor-indicator');
+	    		if (avail)
+	    			_sensorOn($el);
+	    		else
+	    			_sensorOff($el);
+	    		break;
+	      case 'wifi':
+	      	$el = $('.sensor-row.wifi .sensor-indicator');
+	    		if (avail)
+	    			_sensorOn($el);
+	    		else
+	    			_sensorOff($el);
+	    		break;
 	    }
 	  }
 	}
 
+	var _populateContacts = function() {
+		var contacts = JSON.parse(localStorage.contacts);
+		if (!contacts) return;
+
+		var $nonEm = $('.card.contacts .sensor-list.module');
+		var $em = $('.card.emergency .sensor-list.module');
+
+		for (var idx in contacts.nonEm) {
+			var contact = contacts.nonEm[idx];
+
+			var row = $(window.contactRow.innerHTML);
+			row.find('.sensor-label').html(
+				contact.firstName + ' ' + 
+				contact.lastName + '<p>' + 
+				contact.relationship + '</p>'
+			);
+			$nonEm.append(row);
+		}
+
+		for (var idx in contacts.em) {
+			var contact = contacts.em[idx];
+
+			var row = $(window.contactRow.innerHTML);
+			row.find('.sensor-label').html(
+				contact.firstName + ' ' + 
+				contact.lastName + '<p>' + 
+				contact.relationship + '</p>'
+			);
+			$em.append(row);
+		}
+
+
+	}
+
 	_populateSensors();
+	_populateContacts();
 };
 
 
@@ -179,7 +236,9 @@ if (window.navigator.platform == 'MacIntel') {
 	    gps: true,
 	    heartrate: false,
 	    proximity: false,
-	    barometer: false
+	    barometer: false,
+	    cell: true,
+	    wifi: false
 		}
 		window.appReady();
 	});
@@ -201,15 +260,35 @@ function closeOverlay() {
 
 
 function addContact(isEmergency) {
-	ovr = $('#overlay');
+	var ovr = $('#overlay');
 	ovr.find('.wrapper').append(window.contactEditForm.innerHTML);
 	ovr.show();
 }
 
 
 function createContact(form) {
-	// TODO
+	
+
 	closeOverlay();
 	return false;
+}
+
+
+function sendSms(tel, msg) {
+	if (window.sms) {
+		var good = function(msg) {
+			console.log("SMS Sent: "+tel);
+		}
+		var bad = function(err) {
+			console.error("Failed sending SMS: "+err);
+		}
+
+		var message = {
+			phoneNumber: tel,
+			textMessage: msg
+		}
+
+		sms.sendMessage (message, good, bad);
+	}
 }
 

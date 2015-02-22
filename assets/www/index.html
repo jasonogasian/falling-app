@@ -37,6 +37,18 @@
       </div>
     </script>
 
+    <script id="contactRow" type="text/html">
+      <div class="sensor-row nem-contact">
+        <div class="sensor-test"></div>
+        <div class="sensor-indicator on circle green"></div>
+        <div class="sensor-label">
+          // John Smith
+          // <p>Husband</p>
+        </div>
+        <div class="sensor-edit"></div>
+      </div>
+    </script>
+
     <script id="contactEditForm" type="text/html">
       <div class="header">Contact Entry</div>
       <form onsubmit="return createContact($(this))">
@@ -165,7 +177,6 @@
           <div class="header module">
             Sensors
           </div>
-
           <div class="sensor-list module">
             <div class="sensor-row hr">
               <div class="sensor-reset"></div>
@@ -205,7 +216,6 @@
           <div class="header module">
             Networks
           </div>
-
           <div class="sensor-list module">
             <div class="sensor-row cell">
               <div class="sensor-test"></div>
@@ -230,7 +240,6 @@
           <div class="header module">
             Communicate
           </div>
-
           <div class="sensor-list module">
             <div class="sensor-row sms">
               <div class="sensor-test"></div>
@@ -247,39 +256,7 @@
           <div class="header module">
             Non-Emergency Contacts
           </div>
-
-          <div class="sensor-list module">
-            <div class="sensor-row nem-contact">
-              <div class="sensor-test"></div>
-              <div class="sensor-indicator on circle green"></div>
-              <div class="sensor-label">
-                <!-- <p>Level 1,2,3 - Incident System</p> -->
-                John Smith
-                <p>Husband</p>
-              </div>
-              <div class="sensor-edit"></div>
-            </div>
-            <div class="sensor-row nem-contact">
-              <div class="sensor-test"></div>
-              <div class="sensor-indicator on circle green"></div>
-              <div class="sensor-label">
-                <!-- <p>Level 1,2,3 - Incident System</p> -->
-                Kim Lawless
-                <p>Daughter</p>
-              </div>
-              <div class="sensor-edit"></div>
-            </div>
-            <div class="sensor-row nem-contact">
-              <div class="sensor-test"></div>
-              <div class="sensor-indicator on circle green"></div>
-              <div class="sensor-label">
-                <!-- <p>Level 3 - Incident System</p> -->
-                Susan Johnson
-                <p>Neighbor</p>
-              </div>
-              <div class="sensor-edit"></div>
-            </div>
-          </div>
+          <div class="sensor-list module"></div>
           <div class="module">
             <div class="sensor-add" onclick="addContact(false)">+</div>
           </div>
@@ -289,7 +266,6 @@
           <div class="header module">
             Emergency Contacts
           </div>
-
           <div class="sensor-list module">
             <div class="sensor-row em-contact">
               <div class="sensor-test transparent"></div>
@@ -301,26 +277,6 @@
               </div>
             </div>
             <hr />
-            <div class="sensor-row em-contact">
-              <div class="sensor-test"></div>
-              <div class="sensor-indicator on circle green"></div>
-              <div class="sensor-label">
-                <!-- <p>IMMEDIATE - Incident System</p> -->
-                Kim Lawless
-                <p>Daughter</p>
-              </div>
-              <div class="sensor-edit"></div>
-            </div>
-            <div class="sensor-row em-contact">
-              <div class="sensor-test"></div>
-              <div class="sensor-indicator on circle green"></div>
-              <div class="sensor-label">
-                <!-- <p>Level 3 - Incident System</p> -->
-                Gloria Elizadro
-                <p>Personal Caregiver</p>
-              </div>
-              <div class="sensor-edit"></div>
-            </div>
           </div>
           <div class="module">
             <div class="sensor-add" onclick="addContact(true)">+</div>
@@ -333,6 +289,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/contacts.js"></script>
     <script type="text/javascript" src="js/falling.js"></script>
     <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript" src="js/index.js"></script>

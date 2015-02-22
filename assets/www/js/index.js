@@ -25,7 +25,9 @@ var app = {
             gps: false,
             heartrate: false,
             proximity: false,
-            barometer: false
+            barometer: false,
+            cell: false,
+            wifi: false
         };
         this.bindEvents();
     },
@@ -64,6 +66,11 @@ var app = {
         // Check for geolocation support
         if (navigator.geolocation) {
             window.sensors.gps = true;
+        }
+
+        // Check for sms support
+        if (window.sms) {
+            window.sensors.cell = true;
         }
 
         window.appReady();

@@ -13,13 +13,21 @@ module.exports = [
         "clobbers": [
             "navigator.accelerometer"
         ]
+    },
+    {
+        "file": "plugins/com.jsmobile.plugins.sms/www/sms.js",
+        "id": "com.jsmobile.plugins.sms.sms",
+        "clobbers": [
+            "window.sms"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "org.apache.cordova.device-motion": "0.2.4",
-    "org.apache.cordova.geolocation": "0.3.13-dev"
+    "org.apache.cordova.geolocation": "0.3.13-dev",
+    "com.jsmobile.plugins.sms": "0.0.1"
 }
 // BOTTOM OF METADATA
 });
