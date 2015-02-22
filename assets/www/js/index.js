@@ -37,6 +37,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("pause", this.background, false);
+        document.addEventListener("resume", this.foreground, false);
     },
     // deviceready Event Handler
     //
@@ -121,6 +123,16 @@ var app = {
         }
 
         window.appReady();
+    },
+
+
+    background: function() {
+        console.log('App in background');
+    },
+
+
+    foreground: function() {
+        console.log('App in foreground');
     },
 
 
