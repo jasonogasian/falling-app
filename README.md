@@ -16,3 +16,9 @@ SMS
 _____________
 	Instructions: http://plugins.cordova.io/#/package/com.jsmobile.plugins.sms
 	plugman install --platform android --project . --plugin https://github.com/hazems/cordova-sms-plugin.git
+
+
+Proximity
+_____________
+	Instructions: https://github.com/awoken-well/cordova-plugin-proximity
+	plugman install --platform android --project . --plugin https://github.com/awoken-well/cordova-plugin-proximity.git

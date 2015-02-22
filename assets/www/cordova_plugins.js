@@ -41,6 +41,13 @@ module.exports = [
         "clobbers": [
             "window.bluetoothSerial"
         ]
+    },
+    {
+        "file": "plugins/org.awokenwell.proximity/www/proximity.js",
+        "id": "org.awokenwell.proximity.proximity",
+        "clobbers": [
+            "navigator.proximity"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -50,7 +57,8 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.13-dev",
     "com.jsmobile.plugins.sms": "0.0.1",
     "org.dartlang.phonegap.gyroscope": "0.0.2",
-    "com.megster.cordova.bluetoothserial": "0.3.5"
+    "com.megster.cordova.bluetoothserial": "0.3.5",
+    "org.awokenwell.proximity": "0.2.1"
 }
 // BOTTOM OF METADATA
 });

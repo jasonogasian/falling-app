@@ -98,6 +98,11 @@ var app = {
             window.sensors.cell = true;
         }
 
+        // Check for proximity support
+        if (navigator.proximity) {
+            window.sensors.proximity = true;
+        }
+
         window.appReady();
     },
 
