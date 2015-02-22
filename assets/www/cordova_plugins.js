@@ -34,6 +34,13 @@ module.exports = [
         "clobbers": [
             "navigator.gyroscope"
         ]
+    },
+    {
+        "file": "plugins/com.megster.cordova.bluetoothserial/www/bluetoothSerial.js",
+        "id": "com.megster.cordova.bluetoothserial.bluetoothSerial",
+        "clobbers": [
+            "window.bluetoothSerial"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -42,7 +49,8 @@ module.exports.metadata =
     "org.apache.cordova.device-motion": "0.2.4",
     "org.apache.cordova.geolocation": "0.3.13-dev",
     "com.jsmobile.plugins.sms": "0.0.1",
-    "org.dartlang.phonegap.gyroscope": "0.0.2"
+    "org.dartlang.phonegap.gyroscope": "0.0.2",
+    "com.megster.cordova.bluetoothserial": "0.3.5"
 }
 // BOTTOM OF METADATA
 });

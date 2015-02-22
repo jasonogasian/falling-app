@@ -20,6 +20,12 @@
                             "xml": "<feature name=\"Gyroscope\"><param name=\"android-package\" value=\"org.dartlang.phonegap.gyroscope.GyroscopeListener\" /></feature>",
                             "count": 1
                         }
+                    ],
+                    "/widget": [
+                        {
+                            "xml": "<feature name=\"BluetoothSerial\"><param name=\"android-package\" value=\"com.megster.cordova.BluetoothSerial\" /></feature>",
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -39,6 +45,14 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.SEND_SMS\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,6 +70,9 @@
             "PACKAGE_NAME": "com.ogasian.falling"
         },
         "org.dartlang.phonegap.gyroscope": {
+            "PACKAGE_NAME": "com.ogasian.falling"
+        },
+        "com.megster.cordova.bluetoothserial": {
             "PACKAGE_NAME": "com.ogasian.falling"
         }
     },

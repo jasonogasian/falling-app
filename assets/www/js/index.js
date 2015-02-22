@@ -76,6 +76,18 @@ var app = {
             );
         }
 
+        // Check for bluetooth connectivity
+        bluetoothSerial.isEnabled(
+            function() {
+                window.sensors.heartrate = true;
+                App.populate();
+            },
+            function() {
+                window.sensors.heartrate = false;
+                App.populate();
+            }
+        );
+
         // Check for geolocation support
         if (navigator.geolocation) {
             window.sensors.gps = true;
