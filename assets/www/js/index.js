@@ -50,16 +50,29 @@ var app = {
             window.sensors.accelerometer = true;
 
             navigator.accelerometer.watchAcceleration(
-                // success handler
                 app.fallDetect,
 
-                // error handler
                 function (e) {
                   alert("accel fail (" + e.name + ": " + e.message + ")");
                 },
 
-                // options: update every 100ms
                 { frequency: 100 }
+            );
+        }
+
+        // Listen to gyroscope every 100ms
+        if (navigator.gyroscope) {
+            window.sensors.gyro = true;
+
+            navigator.gyroscope.watchAngularSpeed(
+                app.recordGyro,
+
+                function (e) {
+                  alert("gyro fail");
+                },
+
+                { frequency: 100 }
+
             );
         }
 
@@ -76,6 +89,12 @@ var app = {
         window.appReady();
     },
 
+
+    recordGyro: function(speed) {
+        app.gyroValue = speed;
+    },
+
+
     // Check accelerometer values for fall range
     fallDetect: function(acc) {
         var GRAVITY_EARTH =  9.80665; // Earth's gravity in SI units (m/s^2)
@@ -91,6 +110,6 @@ var app = {
         if (gForce > THRESHHOLD) {
             alert('SHAKEN, not stirred!');
         }
-        console.log(gForce);
+        // console.log(gForce, app.gyroValue);
     }
 };

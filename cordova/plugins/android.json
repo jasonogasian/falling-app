@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.jsmobile.plugins.sms.Sms\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Gyroscope\"><param name=\"android-package\" value=\"org.dartlang.phonegap.gyroscope.GyroscopeListener\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -49,6 +53,9 @@
             "PACKAGE_NAME": "com.ogasian.falling"
         },
         "com.jsmobile.plugins.sms": {
+            "PACKAGE_NAME": "com.ogasian.falling"
+        },
+        "org.dartlang.phonegap.gyroscope": {
             "PACKAGE_NAME": "com.ogasian.falling"
         }
     },

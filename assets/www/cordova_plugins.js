@@ -20,6 +20,20 @@ module.exports = [
         "clobbers": [
             "window.sms"
         ]
+    },
+    {
+        "file": "plugins/org.dartlang.phonegap.gyroscope/www/AngularSpeed.js",
+        "id": "org.dartlang.phonegap.gyroscope.AngularSpeed",
+        "clobbers": [
+            "AngularSpeed"
+        ]
+    },
+    {
+        "file": "plugins/org.dartlang.phonegap.gyroscope/www/gyroscope.js",
+        "id": "org.dartlang.phonegap.gyroscope.gyroscope",
+        "clobbers": [
+            "navigator.gyroscope"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -27,7 +41,8 @@ module.exports.metadata =
 {
     "org.apache.cordova.device-motion": "0.2.4",
     "org.apache.cordova.geolocation": "0.3.13-dev",
-    "com.jsmobile.plugins.sms": "0.0.1"
+    "com.jsmobile.plugins.sms": "0.0.1",
+    "org.dartlang.phonegap.gyroscope": "0.0.2"
 }
 // BOTTOM OF METADATA
 });
